@@ -42,23 +42,23 @@
         <div>
 
             <span class='control note-link' ng-if='$ctrl.note.id !== "root"' ui-sref='note({ id: $ctrl.note.id })' title='{{$ctrl.note.id}}'>
-                <i class="fa fa-link" aria-hidden="true"></i>
+                <i class="fas fa-link" aria-hidden="true"></i>
             </span>
 
             <span ng-click="$ctrl.speechToText()" title="Speech to Text" class='control note-link' ng-if='$ctrl.note.id !== "root"' title='{{$ctrl.note.id}}' ng-class="{recording: $ctrl.playerStatus.isActive}">
-                <i class="fa fa-commenting" aria-hidden="true"></i>
+                <i class="fas fa-commenting-alt" aria-hidden="true"></i>
             </span>
 
 			<span class='control' ng-click='$ctrl.addChildNote()' title='Add child note'>
-				<i class="fa fa-plus" aria-hidden="true"></i>
+				<i class="fas fa-plus" aria-hidden="true"></i>
 			</span>
 
 			<span class='control' ng-if='$ctrl.note.id !== "root"' ng-click='$ctrl.unlinkThisNote()'>
-				<i class="fa fa-trash-o" aria-hidden="true"></i>
+				<i class="fa fas-trash-alt" aria-hidden="true"></i>
 			</span>
 
             <span class="control" ng-click ='$ctrl.paste()' title='Paste selected notes'>
-                <i class='fa fa-clipboard' aria-hidden='true'></i>
+                <i class='fas fa-clipboard' aria-hidden='true'></i>
 			</span>
 
 			<span class='control'>

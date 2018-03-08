@@ -27,7 +27,7 @@
         vm.toggleDarkTheme = _toggleDarkTheme;
         vm.syncWithServer = _syncWithServer;
         vm.speak = _speak;
-
+        vm.btnGithub = _btnGithub;
 
         vm.playerStatus = {
             status: "Play Aloud",
@@ -49,6 +49,20 @@
             vm.playerStatus.status = vm.modes.default;
             $scope.$apply();
         }, false);
+
+        function _btnGithub() {
+            console.log("github button");
+            var w = 600;
+            var h = 600;
+            var left = (screen.width / 2) - (w / 2);
+            var top = (screen.height / 2) - (h / 2);
+            return window.location.href =
+                'https://github.com/login/oauth/authorize?' +
+                'client_id=df80bc5f88b4806c4269&' +
+                //'client_secret=0c79495a0554154bc09f3d95fd92220b35c86c2e&' +
+                'state=fdsafdghfadkfjadp&' +
+                'redirect_uri=' + encodeURIComponent(window.location.origin + '/api/oauth/github')
+        }
 
 
         function _speak() {

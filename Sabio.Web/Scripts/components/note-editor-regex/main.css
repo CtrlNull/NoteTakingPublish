@@ -1,0 +1,11 @@
+note-editor-regex .classMatch {
+    background-color: lawngreen !important;
+}
+
+note-editor-regex .noRegex {
+    color: red !important;
+}
+
+note-editor-regex .foundRegex {
+    color: blue !important;
+}

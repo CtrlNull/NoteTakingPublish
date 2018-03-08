@@ -1,0 +1,29 @@
+﻿<h1>Viewing all cars</h1>
+
+<div>
+    <button ui-sref='create-cars'>New</button>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Make</th>
+            <th>Model</th>
+            <th>Year</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat='car in $ctrl.cars'>
+            <td>{{car.id}}</td>
+            <td>{{car.make}}</td>
+            <td>{{car.model}}</td>
+            <td>{{car.year}}</td>
+            <td>
+                <button ui-sref='edit-cars({ id: car.id })'>Edit</button>
+                <button ng-click='$ctrl.deleteCar($index)'>Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

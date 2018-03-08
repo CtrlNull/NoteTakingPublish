@@ -1,0 +1,351 @@
+@import 'fonts.css';
+
+body {
+    font-family: 'Roboto';
+    margin: 0px;
+}
+
+.error {
+    color: red;
+}
+
+#main-ui-view {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    color: #7FA68C;
+    background-color: #192B38;
+    justify-content: stretch;
+}
+
+    #main-ui-view input {
+        border-radius: 5px;
+        background-color: #2E5458;
+        border: 0;
+        outline: none;
+        color: #7FA68C;
+    }
+
+        #main-ui-view input:focus {
+            color: white;
+            background-color: #4E7367;
+        }
+
+
+    #main-ui-view button {
+        background-color: #192B38;
+        color: #7FA68C;
+        border-color: #192B38;
+    }
+
+        #main-ui-view button:hover {
+            color: #FFFFFF;
+            box-shadow: 0 5px 15px #192B38;
+            transition: 0.2s;
+        }
+
+notes-display {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    flex: 1;
+}
+
+    notes-display > * {
+        flex: 0;
+    }
+
+    notes-display > main {
+        display: flex;
+        flex: 1;
+        overflow-x: hidden;
+    }
+
+        notes-display > main > note-card {
+            flex: 1;
+            border: 1px solid gainsboro;
+            border-radius: 5px;
+            border-left: 0px;
+            display: block;
+            padding: 0.3em;
+            overflow-y: auto;
+        }
+
+note-card:not(.root-note) .child-notes {
+    margin-left: 1em;
+}
+
+tool-bar {
+    padding: 0.5em;
+}
+
+note-tree {
+    flex: 0;
+    min-width: 18em;
+    display: block;
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+    padding: 0.3em;
+    background-color: #192B38;
+}
+
+.note-tree-title {
+    cursor: pointer;
+    user-select: none;
+}
+
+note-tree .expander:focus {
+    outline: 0px;
+}
+
+.note-tree-children {
+    padding-left: 1.4em;
+}
+
+#main-ui-view note-tree button.expander {
+    border: 1px solid #7FA68C;
+    border-radius: 5px;
+    background-color: transparent;
+    font-size: 0.7em;
+    display: inline-block;
+    width: 1.4em;
+    padding: 0px;
+    height: 1.5em;
+    cursor: pointer;
+    color: #7FA68C;
+}
+
+#main-ui-view note-tree button.expander:hover {
+    color: white;
+    border-color: white;
+    transition: 0.2s;
+}
+
+note-card {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+    note-card .note-link {
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+        opacity: 0.5;
+        font-size: 0.8em;
+        color: #7FA68C !important;
+    }
+
+        note-card .note-link:link {
+            text-decoration: none;
+        }
+
+    note-card:not(.root-note) .note-card {
+        padding: 0.4em;
+        margin: 0.35em 0.35em 0.1em 0.35em;
+        box-shadow: 0 6px 8px rgba(102,119,136,0.03), 0 0px 2px rgba(102,119,136,0.3);
+        background-color: #22424B;
+        position: relative;
+        border-radius: 5px;
+    }
+
+    note-card .controls {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 0.5em;
+        align-items: center;
+    }
+
+    note-card textarea {
+        flex: 1;
+        font-family: Roboto;
+        border: 0px;
+        border-radius: 5px;
+        background-color: #2E5458;
+        color: white;
+    }
+
+        note-card textarea:focus {
+            outline: none;
+            background-color: #4E7367;
+        }
+
+    note-card .dates {
+        color: #d7cfcf;
+        font-size: 0.8em;
+        font-weight: 300;
+    }
+
+    note-card .toggle-expanded {
+        transform: rotate(0deg);
+        transition: transform 200ms ease-out;
+        cursor: pointer;
+        display: inline-block;
+        color: #7FA68C;
+        user-select: none;
+    }
+
+        note-card .toggle-expanded.toggled {
+            transform: rotate(90deg);
+        }
+
+    note-card .toggle-sort {
+        transform: rotate(180deg);
+        transition: transform 200ms ease-out;
+        cursor: pointer;
+        display: inline-block;
+        color: #7FA68C;
+        user-select: none;
+        padding: 0.2em;
+    }
+
+        note-card .toggle-sort.toggled {
+            transform: rotate(0deg);
+        }
+
+
+note-editor-graphviz .editor {
+    display: flex;
+}
+
+note-editor-graphviz .rendering {
+    margin-top: 0.5em;
+    font-style: italic;
+}
+
+note-editor-graphviz svg {
+    margin-top: 0.5em;
+}
+
+note-editor-text .editor-text {
+    display: flex;
+}
+
+/* Jordan's UI Hacks */
+
+div.note-card {
+    z-index: 1;
+    animation-duration: 0.2s;
+    animation-name: slideout;
+}
+
+note-card .note-card:hover {
+    box-shadow: 0 5px 15px #081a27;
+    transition: 0.2s;
+}
+
+@keyframes slideout {
+    from {
+        margin-top: -5%;
+        z-index: 0;
+        opacity: 0;
+    }
+
+    to {
+        margin-top: 0%;
+        z-index: 1;
+        opacity: 1;
+    }
+}
+
+#main-ui-view .controls button {
+    border-radius: 20px;
+    background-color: #192B38;
+    border-color: #192B38;
+    color: forestgreen;
+    outline: none;
+}
+
+#main-ui-view div.controls button:hover {
+    color: lawngreen;
+    transition: 0.2s;
+}
+
+#main-ui-view .controls button.ng-scope {
+    border-radius: 5px;
+    color: darkred;
+}
+
+    #main-ui-view .controls button.ng-scope:hover {
+        color: red;
+    }
+
+div.controls span.dates {
+    color: #4E7367;
+}
+
+div.controls select, div.controls input {
+    border-radius: 5px;
+    background-color: #2E5458;
+    border: 0;
+    color: #7FA68C;
+    outline: none;
+}
+
+    div.controls input:focus, div.controls select:focus {
+        background-color: #4E7367;
+        color: white;
+    }
+
+tool-bar {
+    background-color: #22424B;
+}
+
+    /*tool-bar button {
+        background-color: #192B38;
+        color: #7FA68C;
+        border-color: #192B38;
+    }
+
+        tool-bar button:hover {
+            color: #FFFFFF;
+            box-shadow: 0 5px 15px #192B38;
+            transition: 0.2s;
+        }*/
+
+    tool-bar input, tool-bar button {
+        border-radius: 5px;
+        outline: none;
+    }
+
+    tool-bar input {
+        background-color: #2E5458;
+        border: 0;
+        color: white;
+    }
+
+        tool-bar input:focus {
+            background-color: #4E7367;
+        }
+
+    tool-bar #toggle-theme {
+        clear: left;
+        float: right;
+    }
+
+.editor-tag-search button {
+    border-radius: 5px;
+}
+
+#main-ui-view note-editor-graphviz div label input {
+    color: white;
+}
+
+#main-ui-view note-editor-tag-search div input {
+    color: white;
+}
+
+#main-ui-view note-editor-regex input {
+    color: white;
+}
+
+#main-ui-view note-editor-regex .classMatch {
+    background-color: forestgreen !important;
+}
+
+#main-ui-view note-editor-regex .noRegex {
+    color: red !important;
+}
+
+#main-ui-view note-editor-regex .foundRegex {
+    color: greenyellow !important;
+}

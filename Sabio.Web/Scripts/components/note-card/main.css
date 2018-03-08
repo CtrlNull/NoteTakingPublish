@@ -1,0 +1,137 @@
+note-card {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.note-card {
+    padding: 0.4em 0.6em 0.4em 0.4em;
+    margin: 0.35em 0.35em 0.1em 0.35em;
+    box-shadow: 0 6px 8px rgba(102,119,136,0.03), 0 0px 2px rgba(102,119,136,0.3);
+    background-color: white;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+    .note-card > .editor {
+        flex: 1;
+    }
+
+note-card .controls {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-right: 0.2em;
+}
+
+note-card .controls .control {
+    color: #555;
+    cursor: pointer;
+    margin-left: 0.3em;
+    color: #555;
+}
+
+note-card textarea {
+    flex: 1;
+    font-family: Roboto;
+    border: 0px;
+}
+
+    note-card textarea:focus {
+        outline: none;
+        background-color: rgb(252, 251, 235);
+    }
+
+note-card .dates {
+    color: #d7cfcf;
+    font-size: 0.8em;
+    font-weight: 300;
+}
+
+note-card .toggle-expanded {
+    transform: rotate(0deg);
+    transition: transform 200ms ease-out;
+    cursor: pointer;
+    display: inline-block;
+    user-select: none;
+}
+
+    note-card .toggle-expanded.toggled {
+        transform: rotate(90deg);
+    }
+
+note-card .toggle-sort {
+    transform: rotate(180deg);
+    transition: transform 200ms ease-out;
+    cursor: pointer;
+    display: inline-block;
+    color: rgb(65, 65, 65);
+    user-select: none;
+    padding: 0.2em;
+}
+
+    note-card .toggle-sort.toggled {
+        transform: rotate(0deg);
+    }
+
+
+.editor {
+    display: flex;
+}
+
+    .editor > * {
+        flex: 1;
+    }
+
+note-card .editor a {
+    text-decoration: none;
+}
+
+    note-card .editor a:hover {
+        text-decoration: underline;
+    }
+
+note-card .note-type-select {
+    margin-right: 0.5em;
+}
+
+/****** LOGIN MODAL ******/
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+.clientSyncModal {
+    text-align: center;
+    font-size: 14px;
+    font-family: 'Arial', sans-serif;
+    font-weight: 700;
+    height: 36px;
+    padding: 0 8px;
+}
+
+.clientSyncModal-container{
+    padding: 30px;
+    max-width: 350px;
+    width: 100% !important;
+    background-color: #F7F7F7;
+    margin: 0 auto;
+    border-radius: 2px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    font-family: roboto;
+}
+
+note-card .tags-input {
+    margin-left: 0.5em;
+}
+
+note-card .note-editor {
+    margin-top: 0.4em;
+}
+
+note-card .child-notes {
+    margin-bottom: 0.1em;
+    margin-left: 1.7em;
+}
+
+note-card .recording {
+    color: red !important;
+}

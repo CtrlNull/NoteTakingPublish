@@ -1,0 +1,4 @@
+note-editor-text .editor-text {
+    display: flex;
+    flex: 1;
+}

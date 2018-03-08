@@ -1,0 +1,9 @@
+<textarea
+    spellcheck="false"
+    ng-model='$ctrl.note.body'
+    ng-blur='$ctrl.noteControls.save()'
+    ng-keydown='$ctrl.keyDown($event)'></textarea>
+
+<div class='instructions'>
+    Hit Ctrl+Enter to add child note
+</div>

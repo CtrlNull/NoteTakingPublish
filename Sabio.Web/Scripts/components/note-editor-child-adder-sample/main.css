@@ -1,0 +1,14 @@
+note-editor-child-adder-sample {
+    display: flex;
+    flex-direction: column;
+}
+
+note-editor-child-adder-sample .instructions {
+    font-weight: 300;
+    font-style: italic;
+    font-size: 0.8em;
+}
+
+note-editor-child-adder-sample textarea {
+    font-family: monospace;
+}

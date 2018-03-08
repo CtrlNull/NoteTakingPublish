@@ -1,0 +1,26 @@
+<div>
+    <label>
+        Title:
+        <input type='text' ng-model='$ctrl.note.title' ng-blur='$ctrl.noteControls.save()'>
+    </label>
+    <label>
+        <input type='checkbox' ng-model='$ctrl.editMode'>
+        Edit
+    </label>
+</div>
+
+<div ng-if='$ctrl.editMode' class='editor'>
+    <textarea
+        spellcheck="false"
+        ng-model='$ctrl.note.body'
+        placeholder='Enter Graphviz description'
+        ng-blur='$ctrl.noteControls.save()'
+        ></textarea>
+    <div class='help'>
+        <a href='http://tonyballantyne.com/graphs.html' target='_blank'>Quick reference</a>
+    </div>
+</div>
+
+<div ng-if='!$ctrl.editMode' ng-bind-html="$ctrl.svg"></div>
+<div class='rendering' ng-if='$ctrl.rendering'>Rendering...</div>
+<div class='error'>{{$ctrl.errorMessage}}</div>

@@ -1,0 +1,107 @@
+<div class='editor-gvideo'>
+    <video ng-if="$ctrl.note.body.hideDrive" controls="controls" type="video/mp4" id="videoPlayer" ng-src="{{$ctrl.note.body.noteVideoElement}}"></video>
+    <div ng-if="$ctrl.showNew">
+        <div id="timeStamp">{{$ctrl.timeStamp}}</div>
+        <div style="display:flex;">
+            <textarea rows="5" cols="100" class='subtitleTextarea' ng-model="$ctrl.subtitle"></textarea>
+        </div>
+        <button ng-click='$ctrl.addChildNote()' class="addSubTitleButton">Add</button>
+    </div>
+    <div id="login-box" class="hide" ng-if="!$ctrl.note.body.hideDrive">
+        <p>Please login on your google account.</p>
+        <button id="btnLogin" onclick="handleAuthClick()" class="button">Login</button>
+    </div>
+
+    <div id="drive-box" class="hide" ng-if="!$ctrl.note.body.hideDrive">
+        <div id="drive-breadcrumb">
+            <span class='breadcrumb-arrow'></span> <a data-id='root' data-level='0'>Home</a>
+            <span id="span-navigation"></span>
+            <div id="drive-info" class="hide" ng-hide="true">
+                <div class="user-item">Welcome <span id="span-name"></span></div>
+                <div class="user-item">Total Quota: <span id="span-totalQuota"></span></div>
+                <div class="user-item">Used Quota: <span id="span-usedQuota"></span></div>
+                <div class="user-item">Share Mode: <span id="span-sharemode">OFF</span></div>
+                <div class="user-item"><a id="link-logout" class="logout-link" onclick="handleSignoutClick()">Logout</a></div>
+            </div>
+        </div>
+
+
+
+        <div id="drive-menu">
+            <div id="button-reload" title="Refresh" ng-click="$ctrl.reloadFolder()"></div>
+            <div id="button-upload" title="Upload to Google Drive" ng-click="$ctrl.uploadToFolder()" class="button-opt"></div>
+            <div id="button-addfolder" title="Add Folder" ng-click="$ctrl.addToFolder()"></div>
+            <div id="button-share" title="Show shared files only" ng-click="$ctrl.sharedFolder()"></div>
+        </div>
+        <div id="drive-content"></div>
+        <div id="error-message" class="flash hidden"></div>
+        <div id="status-message" class="flash hidden"></div>
+    </div>
+
+    <input type="file" id="fUpload" class="hide" />
+    <div class="float-box" id="float-box">
+        <div class="folder-form">
+            <div class="close-x"><img id="imgClose" src="/content/images/gvideo/button_close.png" alt="close" class="imgClose" /></div>
+
+            <h3 class="clear">Add New Folder</h3>
+            <div><input type="text" id="txtFolder" class="text-input" /></div>
+            <button id="btnAddFolder" value="Save" class="button">Add</button>
+            <button id="btnClose" value="Close" class="button btnClose">Close</button>
+        </div>
+    </div>
+    <div class="float-box-back">
+        <div id="float-box-info" class="float-box">
+            <div class="info-form">
+                <div class="close-x"><img id="imgCloseInfo" class="imgClose" src="/content/images/gvideo/button_close.png" alt="close" /></div>
+                <h3 class="clear">File information</h3>
+                <table cellpadding="0" cellspacing="0" class="tbl-info">
+                    <tr>
+                        <td class="label">Created Date</td>
+                        <td>
+                            <span id="spanCreatedDate"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">Modified Date</td>
+                        <td><span id="spanModifiedDate"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="label">Owner</td>
+                        <td><span id="spanOwner"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="label">Title</td>
+                        <td><span id="spanTitle"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="label">Size</td>
+                        <td><span id="spanSize"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="label">Extension</td>
+                        <td><span id="spanExtension"></span></td>
+                    </tr>
+                    <tr ng-if="$ctrl.isVideo">
+                        <td class="label">ShareVideo</td>
+                        <td>
+                            <span id="spanShareLink"></span>
+                            <button id="createVid" type="button">Add Video</button>
+                        </td>
+                    </tr>
+
+                    
+                </table>
+                <button id="btnCloseInfo" value="Close" class="button btnClose">Close</button>
+            </div>
+        </div>
+    </div>
+    <div id="float-box-text" class="float-box">
+        <div class="info-form">
+            <div class="close-x"><img id="imgCloseText" class="imgClose" src="/content/images/gvideo/button_close.png" alt="close" /></div>
+            <h3 class="clear">Text Content</h3>
+            <div id="text-content"></div>
+            <button id="btnCloseText" value="Close" class="button btnClose">Close</button>
+        </div>
+    </div>
+</div>
+

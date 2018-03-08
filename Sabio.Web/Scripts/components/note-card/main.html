@@ -1,0 +1,165 @@
+<div class='note-card'>
+	<div class='controls'>
+		<div ng-if='$ctrl.note.id !== "root"'>
+			<label>
+				<select ng-model='$ctrl.note.type' ng-change='$ctrl.noteControls.save()'>
+					<option value='text'>Text</option>
+					<option value='graphviz'>Graphviz</option>
+					<option value='tag-search'>Tag search</option>
+					<option value='child-adder-sample'>Sample - child adder</option>
+					<option value='google-maps'>Google Maps</option>
+					<option value="reddit-search">Reddit Search</option>
+					<option value="html">HTML</option>
+					<option value='gvideo'>HTML5 Video</option>
+					<option value="regex">Regex Playground</option>
+					<option value="markdown">Markdown</option>
+					<option value="stackoverflow">Stack Overflow Search</option>
+					<option value='pdf'>PDF viewer</option>
+                    <option value="todos"> To do list</option>
+				</select>
+			</label>
+
+			<input type='text'
+				   ng-if='$ctrl.note.id !== "root"'
+				   ng-model='$ctrl.tagsInput'
+				   ng-blur='$ctrl.updateTags()'
+				   class='tags-input'
+				   placeholder="Tags (space delimited)">
+
+			<span ng-if='$ctrl.note.id !== "root" && $ctrl.childCount > 0'
+				  class='control toggle-expanded'
+				  ng-class='{toggled: $ctrl.expanded}'
+				  ng-click='$ctrl.expanded = !$ctrl.expanded'
+				  title='Expand child notes'>&#9658;</span>
+
+			<span ng-if='$ctrl.childCount > 1'
+				  ng-click='$ctrl.sortDesc = !$ctrl.sortDesc'
+				  class='control toggle-sort'
+				  ng-class='{toggled: $ctrl.sortDesc}'
+				  title='Change child-note sort direction'>&#8673;</span>
+		</div>
+
+        <div>
+
+            <span class='control note-link' ng-if='$ctrl.note.id !== "root"' ui-sref='note({ id: $ctrl.note.id })' title='{{$ctrl.note.id}}'>
+                <i class="fa fa-link" aria-hidden="true"></i>
+            </span>
+
+            <span ng-click="$ctrl.speechToText()" title="Speech to Text" class='control note-link' ng-if='$ctrl.note.id !== "root"' title='{{$ctrl.note.id}}' ng-class="{recording: $ctrl.playerStatus.isActive}">
+                <i class="fa fa-commenting" aria-hidden="true"></i>
+            </span>
+
+			<span class='control' ng-click='$ctrl.addChildNote()' title='Add child note'>
+				<i class="fa fa-plus" aria-hidden="true"></i>
+			</span>
+
+			<span class='control' ng-if='$ctrl.note.id !== "root"' ng-click='$ctrl.unlinkThisNote()'>
+				<i class="fa fa-trash-o" aria-hidden="true"></i>
+			</span>
+
+            <span class="control" ng-click ='$ctrl.paste()' title='Paste selected notes'>
+                <i class='fa fa-clipboard' aria-hidden='true'></i>
+			</span>
+
+			<span class='control'>
+				<input type='checkbox' ng-model='$ctrl.selected[$ctrl.note.id]' title='Check this box to select this item for copy/paste' />
+			</span>
+		</div>
+	</div>
+
+	<div class='editor' ng-if='$ctrl.note.id !== "root"' ng-switch='$ctrl.note.type'>
+		<note-editor-text ng-switch-when='text'
+						  note='$ctrl.note'
+						  note-controls='$ctrl.noteControls'
+						  class='note-editor'></note-editor-text>
+
+        <note-editor-todos ng-switch-when='todos'
+                           note='$ctrl.note'
+                           note-controls='$ctrl.noteControls'
+						   class='note-editor'></note-editor-todos>
+
+		<note-editor-graphviz ng-switch-when='graphviz'
+							  note='$ctrl.note'
+							  note-controls='$ctrl.noteControls'
+							  class='note-editor'></note-editor-graphviz>
+
+		<note-editor-tag-search ng-switch-when='tag-search'
+								note='$ctrl.note'
+								note-controls='$ctrl.noteControls'
+								class='note-editor'></note-editor-tag-search>
+
+		<note-editor-gvideo ng-switch-when='gvideo'
+							note='$ctrl.note'
+							note-controls='$ctrl.noteControls'
+							class='note-editor'></note-editor-gvideo>
+
+		<note-editor-child-adder-sample ng-switch-when='child-adder-sample'
+										note='$ctrl.note'
+										note-controls='$ctrl.noteControls'
+										class='note-editor'></note-editor-child-adder-sample>
+
+		<note-editor-google-maps ng-switch-when='google-maps'
+								 note='$ctrl.note'
+								 note-controls='$ctrl.noteControls'
+								 class='note-editor'></note-editor-google-maps>
+
+
+		<note-editor-pdf ng-switch-when='pdf'
+						 note='$ctrl.note'
+						 note-controls='$ctrl.noteControls'
+						 class='note-editor'></note-editor-pdf>
+
+		<note-editor-paste ng-switch-when="paste"
+						   note="$ctrl.note"
+						   note-controls="$ctrl.noteControls"
+						   class='note-editor'>
+		</note-editor-paste>
+
+        <note-editor-markdown 
+           ng-switch-when="markdown"
+           note="$ctrl.note"
+		   class='note-editor'
+           note-controls="$ctrl.noteControls">
+        </note-editor-markdown>
+
+        <note-editor-html 
+            ng-switch-when="html"
+            note="$ctrl.note"
+            note-controls="$ctrl.noteControls"
+            class='note-editor'
+           >
+        </note-editor-html>
+
+        <note-editor-regex 
+            ng-switch-when="regex"
+            note="$ctrl.note"
+            note-controls="$ctrl.noteControls"
+            class='note-editor'
+            >
+        </note-editor-regex>
+
+        <note-editor-reddit-search 
+           ng-switch-when="reddit-search"
+           note="$ctrl.note"
+		   class='note-editor'
+           note-controls="$ctrl.noteControls">
+        </note-editor-reddit-search>
+
+        <note-editor-stackoverflow 
+           ng-switch-when="stackoverflow"
+           note="$ctrl.note"
+		   class='note-editor'
+           note-controls="$ctrl.noteControls">
+        </note-editor-stackoverflow>
+
+    </div>
+
+</div>
+
+<div class='child-notes'>
+	<note-card ng-repeat='note in $ctrl.notes | orderBy:"+":$ctrl.sortDesc'
+			   note='note'
+			   ng-class='["note-type-" + note.type]'
+			   on-unlink='$ctrl.unlinkChildNote(note)'>
+	</note-card>
+</div>

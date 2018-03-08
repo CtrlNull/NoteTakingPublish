@@ -1,0 +1,53 @@
+note-tree-item {
+    position: relative;
+    display: block;
+    padding-top: 0.4em;
+}
+
+.note-tree-title {
+    cursor: pointer;
+    user-select: none;
+    margin-left: 1.2em;
+    white-space: pre;
+}
+
+note-tree .expander:focus {
+    outline: 0px;
+}
+
+.note-tree-children {
+    padding-left: 1.3em;
+}
+
+note-tree .expander {
+    display: inline-block;
+    cursor: pointer;
+    color: #444;
+    transform: rotate(0deg);
+    transition: transform 100ms ease-in-out;
+    position: absolute;
+    top: 6px;
+    left: -2px;
+    user-select: none;
+}
+
+note-tree .expander.expanded {
+    transform: rotate(90deg);
+}
+
+note-tree-item .note-type {
+    font-weight: 300;
+}
+
+note-tree-item .note-type:before {
+    content: ' [';
+}
+
+note-tree-item .note-type:after {
+    content: ']';
+}
+
+note-tree-item .icon {
+    margin-right: 0.4em;
+    color: #6b6b6b;
+}

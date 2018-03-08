@@ -1,0 +1,18 @@
+﻿<div>
+    
+    <label>
+        <input type='checkbox' ng-model='$ctrl.editMode' ng-blur='$ctrl.noteControls.save()' />
+        Edit
+    </label>
+</div>
+
+<div ng-if='$ctrl.editMode' class='editor'>
+    <textarea spellcheck="false"
+              ng-model='$ctrl.note.body'
+              placeholder='Enter Content In Markdown Syntax'
+              ng-blur='$ctrl.noteControls.save()'></textarea>
+</div>
+
+<div ng-if='!$ctrl.editMode' ng-bind-html="$ctrl.html"></div>
+<div class='rendering' ng-if='$ctrl.rendering'>Rendering...</div>
+<div class='error'>{{$ctrl.errorMessage}}</div>

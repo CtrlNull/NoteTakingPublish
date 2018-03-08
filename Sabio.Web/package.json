@@ -1,0 +1,27 @@
+{
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "del": "3.0.0",
+    "gulp": "3.9.1",
+    "gulp-babel": "^7.0.0",
+    "gulp-concat": "2.6.1",
+    "gulp-config": "0.3.0",
+    "gulp-cssmin": "0.2.0",
+    "gulp-less": "3.0.3",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-ng-templates": "0.0.10",
+    "gulp-rename": "1.2.2",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-uglify": "3.0.0",
+    "gulp-util": "^3.0.8",
+    "gulp-watch": "4.3.11",
+    "gulp-wrap": "0.13.0",
+    "idb": "^2.0.4",
+    "merge-stream": "^1.0.1",
+    "viz.js": "^1.8.0"
+  },
+  "name": "cool-app",
+  "private": true,
+  "version": "1.0.0"
+}

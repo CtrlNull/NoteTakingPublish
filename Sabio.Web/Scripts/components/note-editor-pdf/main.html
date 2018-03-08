@@ -1,0 +1,11 @@
+<div>
+    <div>
+      <label>Input your PDF Link Below</label>
+    </div>
+    <div>
+        <input type="text" name='input' ng-model="$ctrl.url">          
+    </div>
+    <div>
+        <iframe ng-src="{{trustSrc($ctrl.url)}}" frameborder="0"></iframe>
+      </div>
+  </div>

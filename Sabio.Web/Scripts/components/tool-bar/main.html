@@ -1,0 +1,85 @@
+<header>
+    <a href='/'>
+        <span class='banana'>Dev</span>
+        <span class='pad'>Notes</span>
+    </a>
+</header>
+
+<div class='controls'>
+    <button data-step="1" data-intro="Show Intro Tour" ng-click="$ctrl.introjs()" title='Show Intro Tour'><i class="fa fa-lightbulb-o" aria-hidden="true"></i></button>
+    <button title='Get notes from server' data-toggle="modal" data-target="#client-sync-modal"><i class="fa fa-cloud-download" aria-hidden="true"></i></button>
+    <button title='Save notes to server' ng-click="$ctrl.syncWithServer()"><i class="fa fa-cloud-upload" aria-hidden="true"></i></button>
+    <button title='Read selected text aloud' ng-click='$ctrl.speak()'><i class="fa fa-volume-up" aria-hidden="true"></i></button>
+    <button title='JSFiddle' data-toggle="modal" data-target="#JSFiddle-modal"><i class="fa fa-jsfiddle" aria-hidden="true"></i></button><!-- JSFiddle Modal -->
+    <button title='.NetFiddle' data-toggle="modal" data-target="#NetFiddle-modal"><i class="fa fa-windows" aria-hidden="true"></i></button><!-- .C# Fiddle Modal -->
+
+    <span>Search: <input type='text' /></span>
+    <div id="toggle-theme">
+        <label for='light-theme'>Light</label>
+        <input type='radio' name='theme' ng-click='$ctrl.toggleLightTheme()' />
+        <label for='dark-theme'>Dark</label>
+        <input type='radio' name='theme' ng-click='$ctrl.toggleDarkTheme()' />
+    </div>
+</div>
+
+<!-- { .Net Fiddle Modal }-->
+<div class="modal fade" id="NetFiddle-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none; margin-left: -40%">
+    <div class="modal-dialog">
+        <iframe src="https://dotnetfiddle.net/" style="width: 190%; height: 800px;"></iframe>
+    </div>
+</div>
+
+<!-- {Start of JSFiddle Modal }-->
+<div class="modal fade" id="JSFiddle-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none; margin-left: -40%">
+    <div class="modal-dialog">
+        <iframe src="https://jsfiddle.net/" style="width: 190%; height: 800px;"></iframe>
+    </div>
+</div>
+<!-- {End of JSFiddle  Modal }-->
+
+<div ng-controller="NoteClientSyncController as ncs"
+     class="modal fade"
+     id="client-sync-modal"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel"
+     aria-hidden="true"
+     style="display: none;">
+
+    <div class="modal-dialog">
+        <div class="clientSyncModal-container">
+            <form>
+                <div>
+                    <tags-input ng-model="tags"
+                                display-property="name"
+                                placeholder="Add a tag to search"
+                                replace-spaces-with-dashes="false"
+                                min-length="1">
+                        <auto-complete source="loadTags($query)"
+                                       min-length="1"
+                                       load-on-focus="true"
+                                       load-on-empty="false"
+                                       max-results-to-show="3"
+                                       template="autocomplete-template">
+                        </auto-complete>
+                    </tags-input>
+                </div>
+                <div>
+                    <label>Date Min</label>
+                    <input type="date" ng-model="ncs.dateMin" />
+                </div>
+                <div>
+                    <label>Date Max</label>
+                    <input type="date" ng-model="ncs.dateMax" />
+                </div>
+                <input type="button" value="Sync" ng-click="ncs.sync()" />
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="autocomplete-template">
+    <div class="autocomplete-template">
+        <span ng-bind-html="$highlight($getDisplayText())"></span>
+    </div>
+</script>

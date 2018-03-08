@@ -1,0 +1,38 @@
+﻿<!--HTML - FOR REGEX PLAYGROUND-->
+<div>
+    <!--REGEX INPUT-->
+    <label for="regEx">Regular Expression</label>
+    <input name="regEx"
+           id="regEx"
+           type="text"
+           class="form-control"
+           placeholder='RegEx - excluding "/"'
+           ng-model="$ctrl.note.body.regex"
+           ng-change="$ctrl.inputChange()"
+           ng-blur='$ctrl.onSave()' />
+
+    <!--TEST VALUE INPUT-->
+    <label for="testValues">Test Values</label>
+    <input name="testValues"
+           id="testValues"
+           type="text"
+           placeholder="Test Values"
+           class="form-control"
+           ng-model="$ctrl.note.body.test"
+           ng-class="{'classMatch': $ctrl.inputChange()}"
+           ng-blur='$ctrl.onSave()' />
+</div>
+
+<p ng-show="!$ctrl.isRegExValid"
+   class="help-block noRegex">
+    The Regular Expression is either invalid or contains "/".
+</p>
+
+<!--MATCHED REGEX VALUES-->
+<div>
+    <strong>
+        RegEx Matched Value(s)
+    </strong>
+    <span ng-class="{'noRegex': !$ctrl.inputChange(), 'foundRegex': $ctrl.inputChange()}">: {{$ctrl.matchedRegex[0]}}</span>
+</div>
+<hr /> 

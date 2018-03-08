@@ -1,0 +1,56 @@
+body {
+    font-family: 'Roboto' !important;
+    font-size: 12pt !important;
+    margin: 0px;
+}
+
+.error {
+    color: red;
+}
+
+#main-ui-view {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    background-color: #f3f3f3;
+    justify-content: stretch;
+}
+
+#splash {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100vh;
+    width: 100vw;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    
+    background-color: rgb(25, 23, 17);
+    font-family: 'Roboto Slab';
+    font-size: 3em;
+    font-weight: 700;
+    color: #DAA520;
+}
+
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+#splash.fadeOut {
+    animation: 0.2s ease-out 0s 1 fadeOut;
+    animation-fill-mode: forwards;
+}
+
+label {
+    font-weight: normal;
+    margin: 0px;
+}

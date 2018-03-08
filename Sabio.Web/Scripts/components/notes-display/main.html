@@ -1,0 +1,14 @@
+﻿<tool-bar></tool-bar>
+<main>
+    <note-tree ng-class='{collapsed: $ctrl.collapsed}' note='$ctrl.rootNote'></note-tree>
+    <div class='toggle' ng-class='{collapsed: $ctrl.collapsed}' ng-click='$ctrl.collapsed = !$ctrl.collapsed'>
+        <span class='expander'>&#9658;</span>
+        <span class='collapser'>&#9658;</span>
+    </div>
+    <note-card
+        ng-if='$ctrl.rootNote'
+        note='$ctrl.rootNote'
+        expanded='true'
+        ng-class='["note-type-" + $ctrl.rootNote.type, { "root-note": true }]'>
+    </note-card>
+</main>

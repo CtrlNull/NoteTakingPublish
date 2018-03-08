@@ -1,0 +1,24 @@
+﻿note-editor-google-maps {
+	min-height: 20em;
+}
+
+note-editor-google-maps .map {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+note-editor-google-maps .floating-panel {
+	position: absolute;
+	top: 10px;
+	left: 25%;
+	z-index: 5;
+	background-color: #fff;
+	padding: 5px;
+	border: 1px solid #999;
+	text-align: center;
+	font-family: 'Roboto','sans-serif';
+	line-height: 30px;
+	padding-left: 10px;
+}
+

@@ -1,0 +1,39 @@
+﻿<link rel="stylesheet" type="text/css" href="todos.css">
+<div>
+    <div ng-model="$ctrl.note.title" data-step="1" data-intro="Double-click on header to title your 'To do List'" ng-hide="$ctrl.editingTitle" ng-click="$ctrl.editingTitle= true">
+        <span ng-if="!$ctrl.note.title"><strong>To do list</strong> </span>
+
+        <strong>{{$ctrl.note.title}}</strong>
+
+    </div>
+
+    <input ng-show="$ctrl.editingTitle" ng-model="$ctrl.note.title" ng-blur="$ctrl.saveTodoListTitle()" ng-keyup="$event.keyCode == 13 ? $ctrl.saveTodoListTitle() : null" />
+
+    <div class="todo-row" ng-repeat="todoItem in $ctrl.note.body">
+        <div>
+            <input type="checkbox" data-step="2" data-intro="You can edit each 'To Do Item' by double-clicking on them" ng-model="todoItem.done" />
+
+            <label ng-class="{doneTodoList: todoItem.done}" ng-hide="todoItem.editing" ng-dblclick="todoItem.editing= true">
+                {{todoItem.text}}
+            </label>
+
+            <input ng-show="todoItem.editing" ng-model="todoItem.text" ng-blur="todoItem.editing= false" />
+        </div>
+        <div>
+            <button ng-click="$ctrl.deleteTodoItem($index)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+        </div>
+    </div>
+
+    <input type="text" class="todoItemInputBox" ng-keyup="$event.keyCode == 13 ? $ctrl.addTodoItem() : null" ng-model="$ctrl.newTodoItem" placeholder="Enter task here" />
+
+    <button ng-click="$ctrl.addTodoItem()" ng-disabled="!$ctrl.newTodoItem">Add</button>
+
+    <div>
+        <button ng-click="$ctrl.removeCheckedItems()" ng-if="$ctrl.hasCheckedItems()">  Clear checked items </button>
+
+    </div>
+</div>
+
+<!--
+<pre>{{$ctrl | json }}</pre>
+    -->

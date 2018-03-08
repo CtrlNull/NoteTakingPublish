@@ -1,0 +1,22 @@
+note-editor-graphviz textarea {
+    height: 20em;
+    font-family: monospace;
+    margin-top: 0.5em;
+}
+
+note-editor-graphviz .editor {
+    flex-direction: column;
+}
+
+note-editor-graphviz .editor .help {
+    font-size: 0.8em;
+}
+
+note-editor-graphviz .rendering {
+    margin-top: 0.5em;
+    font-style: italic;
+}
+
+note-editor-graphviz svg {
+    margin-top: 0.5em;
+}

@@ -1,0 +1,9 @@
+note-tree {
+    flex: 0;
+    min-width: 22em;
+    display: block;
+    border: 1px solid gainsboro;
+    padding: 0.3em;
+    background-color: white;
+    overflow: auto;
+}

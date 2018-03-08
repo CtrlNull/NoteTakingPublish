@@ -1,0 +1,80 @@
+notes-display {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    flex: 1;
+    max-width: 100%;
+}
+
+notes-display > * {
+    flex: 0;
+}
+
+notes-display > main {
+    display: flex;
+    flex: 1;
+    overflow-x: hidden;
+}
+
+notes-display > main > note-card {
+    flex: 1;
+    border: 1px solid gainsboro;
+    border-left: 0px;
+    display: block;
+    padding: 0.3em;
+    overflow-y: scroll;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+notes-display > main {
+    animation: 0.1s ease-out 0s 1 fadeIn;
+}
+
+note-tree.collapsed {
+    display: none;
+}
+
+notes-display .toggle {
+    display: inline-block;
+    cursor: pointer;
+}
+
+notes-display .toggle:not(.collapsed) {
+    border-top: 1px solid gainsboro;
+    top: 0.2em;
+    padding-top: 0.2em;
+    padding-left: 0.2em;
+}
+
+notes-display .toggle.collapsed {
+    left: 0px;
+    width: initial;
+}
+
+notes-display .toggle.collapsed .expander {
+    display: inline-block;
+    border: 1px solid gainsboro;
+    padding-left: 0.2em;
+    cursor: pointer;
+}
+
+notes-display .collapser {
+    transform: rotate(180deg);
+    display: inline-block;
+}
+
+notes-display .toggle.collapsed .collapser {
+    display: none;
+}
+
+notes-display .toggle:not(.collapsed) .expander {
+    display: none;
+}

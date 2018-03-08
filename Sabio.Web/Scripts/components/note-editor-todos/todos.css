@@ -1,0 +1,17 @@
+﻿
+.doneTodoList {
+    text-decoration: line-through;
+}
+
+.todo-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.todoItemInputBox {
+    width: 80%;
+}
+
+.todoListInputBox {
+    width: 80%;
+}

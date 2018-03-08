@@ -1,0 +1,7 @@
+﻿<div class='editor-reddit-search'>
+    <input ng-model='$ctrl.note.body' ng-blur='$ctrl.noteControls.save()'>
+    <button ng-click='$ctrl.search()'>Search Reddit</button>
+    <div>
+        <div ng-if="$ctrl.isLoading" class="loader">Loading...</div>
+    </div>
+</div>

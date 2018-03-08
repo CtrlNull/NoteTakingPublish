@@ -1,0 +1,16 @@
+{
+  "name": "BananaPad",
+  "version": "0.9",
+  "description": "Helps BananaPad talk to third-party sites, among other things",
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "https://drive.google.com/*"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "manifest_version": 2
+}

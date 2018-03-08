@@ -1,0 +1,27 @@
+<div>
+    <div
+        class='expander'
+        ng-if='$ctrl.hasChildren'
+        ng-class='{expanded: $ctrl.expanded}'
+        ng-click='$ctrl.expanded = !$ctrl.expanded'>&#9658;</div>
+
+    <span ng-click='$ctrl.noteClicked()' class='note-tree-title' ng-class='{selected: $ctrl.isSelected()}'>
+        <span class='icon' ng-switch='$ctrl.note.type'>
+            <i ng-switch-when='text' class="fa fa-file-text-o" aria-hidden="true"></i>
+            <i ng-switch-when='html' class="fa fa-file-code-o" aria-hidden="true"></i>
+            <i ng-switch-default class="fa fa-file-o" aria-hidden="true"></i>
+        </span>
+        <span class='title'>{{$ctrl.getNoteTitle()}}</span>
+        <span class='note-type' ng-if='$ctrl.note.type'>{{$ctrl.note.type}}</span>
+    </span>
+</div>
+<div ng-if='$ctrl.hasChildren && $ctrl.expanded'>
+    <div class='note-tree-children'>
+        <note-tree-item
+            ng-repeat='note in $ctrl.notes'
+            note='note'
+            parent-note='$ctrl.note'
+            breadcrumb-path='$ctrl.myPath'
+            ></note-tree-item>
+    </div>
+</div>

@@ -6,31 +6,33 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href='/Scripts/dest/public/app.public.css' rel='stylesheet'/>
 	<link href='/Content/dark.css' rel='stylesheet' id='dark-theme' disabled />
+
 </head>
 <body>
-	<div id='splash'>
-		<div>
-			<div>BananaPad loading...</div>
-			<div class="loader">Loading...</div>
-		</div>
-	</div>
-	<ui-view id='main-ui-view'></ui-view>
+    <div id='splash'>
+        <div>
+            <div>BananaPad loading...</div>
+            <div class="loader">Loading...</div>
+        </div>
+    </div>
+    <ui-view id='main-ui-view'></ui-view>
 
-	<script async defer src="https://apis.google.com/js/api.js"></script>
-	<script src='/Scripts/dest/public/app.public.js'></script>
-	
-	<script async defer
-			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCS4Dg7ej2fVFmCEd11adron11GeCPRXYs">
-	</script>
+    <script async defer src="https://apis.google.com/js/api.js"></script>
+    <script src='/Scripts/dest/public/app.public.js'></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
-	<script type="text/javascript">
-		// Uncomment this when deploying to production OR when testing Service Worker:
-		
-		//  navigator.serviceWorker.register('../worker.js').then(function (reg) {
-		//      console.log('◕‿◕', reg);
-		//  }, function (err) {
-		//      console.log('ಠ_ಠ', err);
-		//  });
-	</script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCS4Dg7ej2fVFmCEd11adron11GeCPRXYs">
+    </script>
+
+    <script type="text/javascript">
+                // Uncomment this when deploying to production OR when testing Service Worker:
+
+                //  navigator.serviceWorker.register('../worker.js').then(function (reg) {
+                //      console.log('◕‿◕', reg);
+                //  }, function (err) {
+                //      console.log('ಠ_ಠ', err);
+                //  });
+    </script>
 </body>
 </html>
